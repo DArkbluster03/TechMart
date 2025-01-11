@@ -81,19 +81,21 @@ Category and Tag Management:
 Add or update product categories and tags.
 
 
+7.Endpoints:
+
 
 ## Milestones
 
 ### Milestone-1 : 
-   -login, signup with authentication (Admin & Others):
-     1.Implement secure login and signup functionality for two roles: Admin and General Users.
-     2.Admins have access to manage products, view user activities, and oversee orders.
-     3.General Users can browse, add items to the cart, and make purchases.
-   -Basic Page layout (Home &Others) :
-    Home Page:
-     1. Showcase featured and top-selling products.
-     2.Add a search bar for product lookup.
-     3. Display categories for easy navigation (e.g., Laptops, Desktops, Accessories).
+-login, signup with authentication (Admin & Others):
+1.Implement secure login and signup functionality for two roles: Admin and General Users.
+2.Admins have access to manage products, view user activities, and oversee orders.
+3.General Users can browse, add items to the cart, and make purchases.
+-Basic Page layout (Home &Others) :
+Home Page:
+1. Showcase featured and top-selling products.
+ 2. 2.Add a search bar for product lookup.
+  3. Display categories for easy navigation (e.g., Laptops, Desktops, Accessories).
     Navigation Bar:
      1. Add links to Home, Products, Categories, About Us, Contact Us, and User Account.
      2.Include a cart icon with a dynamic item counter.
@@ -103,7 +105,7 @@ Add or update product categories and tags.
     User Profile Page: Include order history, saved items, and account settings.
     Responsive Design:
      Make pages mobile-friendly and device-compatible.
----
+
 ### Milestone-2 : 
    - All page functionalities & User interaction:
 
