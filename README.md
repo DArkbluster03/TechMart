@@ -122,11 +122,13 @@ View sales performance and revenue for the shop.
 POST /api/seller/update-pricing
 Update product pricing or set promotional offers..
 - **ResourceManagement**:
+  
  POST /api/resource/warehouse-management
 Manage warehouse resources for stocking and shipping.
 POST /api/resource/order-management
 Manage stock orders for products from suppliers..
 - **UserAuthentication**:
+  
  POST /api/auth/login
 Log in as a customer, seller, or admin.
 
