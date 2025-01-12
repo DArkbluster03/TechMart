@@ -124,7 +124,6 @@ Update product pricing or set promotional offers..
 - **ResourceManagement**:
  POST /api/resource/warehouse-management
 Manage warehouse resources for stocking and shipping.
-
 POST /api/resource/order-management
 Manage stock orders for products from suppliers..
 - **UserAuthentication**:
