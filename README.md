@@ -59,6 +59,87 @@ This platform aims to provide a wide range of high-quality products, including h
 - **User Management**: Create, update, or delete user accounts and roles.
 - **Order Management**: View, update, or delete customer orders.
 - **Category and Tag Management**: Add or update product categories and tags.
+ ### 5. Api Endpoints:
+- **AdminPanel**:
+- POST /api/admin/add-product
+Add a new product to the catalog.
+
+POST /api/admin/manage-inventory
+Manage product inventory (e.g., stock updates).
+
+POST /api/admin/manage-discount
+Set or update discounts on products.
+
+POST /api/admin/manage-orders
+Process orders, including updating order status.
+
+GET /api/admin/reports
+View various reports (sales, inventory, etc.).
+
+POST /api/admin/track-shipping
+Track the shipping status of orders.
+
+POST /api/admin/manage-customer
+Manage customer accounts (update details, block, etc.)..
+- **Customer Panel**:
+- POST /api/customer/create-account
+Create a new customer account.
+
+POST /api/customer/login
+Log in to an existing customer account.
+
+GET /api/customer/view-products
+Browse all products in the catalog.
+
+GET /api/customer/view-product/:productId
+View detailed information about a specific product.
+
+POST /api/customer/add-to-cart
+Add a product to the shopping cart.
+
+POST /api/customer/checkout
+Proceed with order checkout.
+
+POST /api/customer/add-review
+Add a product review.
+
+GET /api/customer/order-history
+View the customer's past orders..
+- **Seller/Shop Owner Panel**:
+-
+- POST /api/seller/add-product
+Sellers can add new products to their store.
+
+POST /api/seller/update-product
+Update details or availability of existing products.
+
+POST /api/seller/manage-orders
+Manage orders, including processing and shipping.
+
+GET /api/seller/view-sales
+View sales performance and revenue for the shop.
+
+POST /api/seller/update-pricing
+Update product pricing or set promotional offers..
+- **ResourceManagement**:
+- POST /api/resource/warehouse-management
+Manage warehouse resources for stocking and shipping.
+
+POST /api/resource/order-management
+Manage stock orders for products from suppliers..
+- **UserAuthentication**:
+- POST /api/auth/login
+Log in as a customer, seller, or admin.
+
+POST /api/auth/register
+Register a new user account (customer or seller).
+
+POST /api/auth/logout
+Log out from the system.
+
+POST /api/auth/reset-password
+Reset a forgotten password for any account type.
+
 
 ---
 
