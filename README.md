@@ -61,7 +61,7 @@ This platform aims to provide a wide range of high-quality products, including h
 - **Category and Tag Management**: Add or update product categories and tags.
  ### 5. Api Endpoints:
 - **AdminPanel**:
-- POST /api/admin/add-product
+POST /api/admin/add-product
 Add a new product to the catalog.
 
 POST /api/admin/manage-inventory
@@ -82,7 +82,7 @@ Track the shipping status of orders.
 POST /api/admin/manage-customer
 Manage customer accounts (update details, block, etc.)..
 - **Customer Panel**:
-- POST /api/customer/create-account
+POST /api/customer/create-account
 Create a new customer account.
 
 POST /api/customer/login
@@ -106,8 +106,8 @@ Add a product review.
 GET /api/customer/order-history
 View the customer's past orders..
 - **Seller/Shop Owner Panel**:
--
-- POST /api/seller/add-product
+
+POST /api/seller/add-product
 Sellers can add new products to their store.
 
 POST /api/seller/update-product
@@ -122,13 +122,13 @@ View sales performance and revenue for the shop.
 POST /api/seller/update-pricing
 Update product pricing or set promotional offers..
 - **ResourceManagement**:
-- POST /api/resource/warehouse-management
+ POST /api/resource/warehouse-management
 Manage warehouse resources for stocking and shipping.
 
 POST /api/resource/order-management
 Manage stock orders for products from suppliers..
 - **UserAuthentication**:
-- POST /api/auth/login
+ POST /api/auth/login
 Log in as a customer, seller, or admin.
 
 POST /api/auth/register
