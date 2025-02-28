@@ -48,7 +48,7 @@ defineProps({
                 </h1>
                 <p class="text-2xl font-semibold text-gray-700 mb-8 italic animate-fade-up delay-100">Your one-stop destination for the latest <span class="text-yellow-600 font-bold">tech gadgets</span> and <span class="text-yellow-600 font-bold">accessories</span>.</p>
                 <Link
-                    href="#"
+                  :href="route('home')"
                     class="bg-yellow-500 text-black font-extrabold text-lg px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 animate-bounce"
                 >Shop Now</Link>
             </div>
