@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\User\ProductListController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'redirectAdmin'], function ()
     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
     Route::post('login', [AdminAuthController::class, 'login'])->name('admin.login.post');
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
+});
+
+Route::prefix('products')->controller(ProductListController::class)->group(function ()  {
+    Route::get('/','index')->name('products.index');
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
