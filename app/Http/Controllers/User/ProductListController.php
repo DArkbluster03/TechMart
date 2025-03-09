@@ -14,18 +14,20 @@ class ProductListController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category', 'brand', 'product_images');
-        $filterProducts = $products->filtered()->paginate(9)->withQueryString();
-        $categories = Category::get();
-        $brands = Brand::get();
+        // Build the base query with related models
+        $productsQuery = Product::with('category', 'brand', 'product_images');
+
+        // Apply filters (including search by title) and paginate results
+        $filterProducts = $productsQuery->filtered()->paginate(9);
+
+        // Get all categories and brands for filter options
+        $categories = Category::all();
+        $brands = Brand::all();
         
-        return Inertia::render(
-            'User/ProductList',
-            [
-                'categories'=>$categories,
-                'brands'=>$brands,
-                'products' => ProductResource::collection($filterProducts)
-            ]
-        );
+        return Inertia::render('User/ProductList', [
+            'categories' => $categories,
+            'brands'     => $brands,
+            'products'   => ProductResource::collection($filterProducts)
+        ]);
     }
 }
