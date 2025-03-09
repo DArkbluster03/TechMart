@@ -2,72 +2,59 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
-
-use function PHPSTORM_META\map;
 
 class Product extends Model
 {
-    use HasSlug;
-    use HasFactory;
-    protected $fillable = [
-        'title',
-        'slug',
-        'description',
-        'published',
-        'inStock',
-        'price',
-        'created_by',
-        'updated_by',
-        'deleted_by',
-    ];
-
-
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
-    }
-
-    public function product_images()
-    {
-        return $this->hasMany(ProductImage::class);
-    }
-
+    // Define the relationship with Category
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(\App\Models\Category::class);
     }
 
+    // Define the relationship with Brand
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
-    }
-    public function cartItems()
-    {
-        return $this->hasMany(CartItem::class);
+        return $this->belongsTo(\App\Models\Brand::class);
     }
 
-    public function  scopeFiltered(Builder $quary)  {
-        $quary
-        ->when(request('brands'), function (Builder $q)  {
-            $q->whereIn('brand_id',request('brands'));
-        })
-        ->when(request('categories'), function (Builder $q)  {
-            $q->whereIn('category_id',request('categories'));
-        })
-        ->when(request('prices'), function(Builder $q)  {
-            $q->whereBetween('price',[
-                request('prices.from',0),
-                request('prices.to', 100000),
-            ]);
-        });
-        
+    // Define the relationship with ProductImage (if applicable)
+    public function product_images()
+    {
+        return $this->hasMany(\App\Models\ProductImage::class);
+    }
+
+    /**
+     * Scope a query to apply filters.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFiltered($query)
+    {
+        // Search by product title if provided
+        if (request()->filled('title')) {
+            $query->where('title', 'like', '%' . request()->get('title') . '%');
+        }
+
+        // Filter by brands (expects an array of brand IDs)
+        if (request()->has('brands') && is_array(request()->get('brands')) && count(request()->get('brands')) > 0) {
+            $query->whereIn('brand_id', request()->get('brands'));
+        }
+
+        // Filter by categories (expects an array of category IDs)
+        if (request()->has('categories') && is_array(request()->get('categories')) && count(request()->get('categories')) > 0) {
+            $query->whereIn('category_id', request()->get('categories'));
+        }
+
+        // Filter by prices (expects an array with 'from' and 'to' keys)
+        if (request()->has('prices')) {
+            $prices = request()->get('prices');
+            if (isset($prices['from']) && isset($prices['to'])) {
+                $query->whereBetween('price', [$prices['from'], $prices['to']]);
+            }
+        }
+
+        return $query;
     }
 }
